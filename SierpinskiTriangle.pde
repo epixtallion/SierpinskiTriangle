@@ -2,27 +2,40 @@ int limit = 10;
 public void setup()
 {
   size(500, 500);
-
-
+  background(255, 212, 102);
 }
 public void draw()
 {
-  noStroke();
-  fill(41, 76, 89);
+  //Clear canvas
+  fill(255, 212, 102);
+  rect(0, 0, 500, 500);
+
+  pushMatrix();
+  translate(250, 250);
+
   //Make triangle
+  noStroke();
+  fill(39, 67, 96);
+  float triHeight = (float) Math.sqrt(3) * 200;
+  triangle(0, triHeight/-2, 200, triHeight/2, -200, triHeight/2);
+
+
   fill(224, 224, 224);
-  //sierpinski();
+  sierpinski(-200, triHeight/2, 200);
+
+  popMatrix();
 }
-public void mouseDragged()//optional
+public void mouseMoved()//optional
 {
-  limit = mouseY / 25;
+  limit = Math.abs((mouseY-250) / 25);
+  System.out.println(limit);
 }
-public void sierpinski(int x, int y, int len)
+public void sierpinski(float x, float y, float len)
 {
   if (len >= limit){
-    triangle(x+len/2, y, x+len/4, y-Math.sqrt(3)*(len/4), x+3*len/4, y-Math.sqrt(3)*(len/4));
+    triangle(x+len/2, y, x+len/4, y-(float)Math.sqrt(3)*(len/4), x+3*len/4, y-(float)Math.sqrt(3)*(len/4));
     sierpinski(x, y, len/2);
     sierpinski(x+len/2, y, len/2);
-    sierpinski(x+len/4, y-Math.sqrt(3)*len/4, len/2);
-  }
+    sierpinski(x+len/4, y-(float)Math.sqrt(3)*len/4, len/2);
+  } else return;
 }
