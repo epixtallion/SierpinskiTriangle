@@ -30,12 +30,14 @@ public void mouseMoved()//optional
   limit = Math.abs((mouseY-250) / 25);
   System.out.println(limit);
 }
-public void sierpinski(float x, float y, float len)
+public void sierpinski(float x, float y, float len, int times)
 {
-  if (len >= limit){
+  if (times == 0) return; else{
+    times--;
     triangle(x+len/2, y, x+len/4, y-(float)Math.sqrt(3)*(len/4), x+3*len/4, y-(float)Math.sqrt(3)*(len/4));
-    sierpinski(x, y, len/2);
-    sierpinski(x+len/2, y, len/2);
-    sierpinski(x+len/4, y-(float)Math.sqrt(3)*len/4, len/2);
-  } else return;
+    sierpinski(x, y, len/2, times);
+    sierpinski(x+len/2, y, len/2, times);
+    sierpinski(x+len/4, y-(float)Math.sqrt(3)*len/4, len/2, times);
+  }
 }
+public void sierpinski(float x, float y, float len){ sierpinski(x, y, len, limit); }
