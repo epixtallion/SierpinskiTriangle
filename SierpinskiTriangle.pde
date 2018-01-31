@@ -28,7 +28,7 @@ public void draw()
 public void mouseMoved()//optional
 {
   int y = Math.abs((mouseY-250)-50*-1+mouseY-250);
-  int x = Math.abs((mouseX-250)-50*-1+mouseY-250);
+  int x = Math.abs((mouseX-250)-50*-1+mouseX-250);
   limit = x > y ? x : y;
 }
 public void sierpinski(float x, float y, float len)
