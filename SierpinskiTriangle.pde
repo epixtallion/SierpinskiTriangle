@@ -1,4 +1,4 @@
-int limit = 10;
+int limit = 6;
 public void setup()
 {
   size(500, 500);
@@ -21,14 +21,15 @@ public void draw()
 
 
   fill(224, 224, 224);
-  sierpinski(-200, triHeight/2, 200);
+  sierpinski(-200, triHeight/2, 400);
 
   popMatrix();
 }
 public void mouseMoved()//optional
 {
-  limit = Math.abs((mouseY-250) / 25);
-  System.out.println(limit);
+  int y = Math.abs((mouseY-250) / (250/6));
+  int x = Math.abs((mouseX-250) / (250/6));
+  limit = x > y ? x : y;
 }
 public void sierpinski(float x, float y, float len, int times)
 {
